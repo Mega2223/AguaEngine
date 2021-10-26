@@ -61,6 +61,8 @@ public class rendererTest1 {
             setLocation(150,150);
             setLayout(new FlowLayout());
             setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            icon = new JLabel();
+            add(icon);
         }
     }
 

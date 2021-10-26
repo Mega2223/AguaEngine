@@ -51,6 +51,7 @@ public class Renderer {
             case Shape.SHAPE_OVAL:
                 Oval oval = (Oval) shape;
                 Dimension dim = new Dimension((int) oval.sizeX, (int) oval.sizeY);
+                //System.out.println((int)coords[0] + (int)coords[1] + dim.height + dim.width);
                 g2d.drawOval((int)coords[0],(int)coords[1], dim.height, dim.width);
                 g2d.fillOval((int)coords[0],(int)coords[1], dim.height, dim.width);
                 break;

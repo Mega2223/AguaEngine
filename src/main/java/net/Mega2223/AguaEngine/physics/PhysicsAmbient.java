@@ -24,8 +24,8 @@ public class PhysicsAmbient {
             float CY = act.coordinates[1];
 
             double radians = (Math.PI / 180) * (act.direction);
-            CX = (int)(CX + act.velocity * Math.cos(radians));
-            CY = (int)(CY + act.velocity * Math.sin(radians));
+            CX = (float) (CX + act.velocity * Math.cos(radians));
+            CY = (float) (CY + act.velocity * Math.sin(radians));
 
             //todo gravidade e os outros
 
@@ -37,5 +37,9 @@ public class PhysicsAmbient {
         for(PhysicsProp act : props){
 
         }
+    }
+    //todo será que da pra fazer isso em mais coisa?
+    public void addProp(PhysicsProp prop){
+        props.add(prop);
     }
 }
