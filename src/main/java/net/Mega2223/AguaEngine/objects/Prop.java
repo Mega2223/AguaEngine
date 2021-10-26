@@ -16,6 +16,7 @@ public class Prop {
     public List<GraphicObject> entities = new ArrayList<GraphicObject>();
     public int collisionAlgorithm = 0;
     public float[][] collisionBoundaries;
+    public float[] coordinates = {0,0};
 
     public Prop(float[][] collisionBoundaries){this.collisionBoundaries = collisionBoundaries;}
 
