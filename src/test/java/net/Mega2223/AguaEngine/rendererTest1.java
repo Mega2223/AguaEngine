@@ -1,10 +1,8 @@
 package net.Mega2223.AguaEngine;
 
-import javafx.scene.shape.Circle;
 import net.Mega2223.AguaEngine.graphics.Renderer;
 import net.Mega2223.AguaEngine.graphics.objects.Board;
-import net.Mega2223.AguaEngine.graphics.objects.Entity;
-import net.Mega2223.AguaEngine.graphics.objects.Shape;
+import net.Mega2223.AguaEngine.graphics.objects.GraphicObject;
 import net.Mega2223.AguaEngine.graphics.objects.shapes.Oval;
 import net.Mega2223.AguaEngine.graphics.objects.shapes.Polygon;
 import net.Mega2223.AguaEngine.graphics.objects.shapes.Rectangle;
@@ -13,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class teste1 {
+public class rendererTest1 {
 
     public static void main(String[] args) {
 
@@ -27,9 +25,9 @@ public class teste1 {
         Rectangle s2 = new Rectangle(20,39);
         Polygon s3 = new Polygon(new float[][]{});
 
-        Entity e1 = new Entity();
-        Entity e2 = new Entity();
-        Entity e3 = new Entity();
+        GraphicObject e1 = new GraphicObject();
+        GraphicObject e2 = new GraphicObject();
+        GraphicObject e3 = new GraphicObject();
 
         e1.shape = new Polygon(new float[][]{{10,10},{10,-10},{-10,-10}});
         e2.shape = new Oval(30,20);

@@ -1,8 +1,8 @@
 package net.Mega2223.AguaEngine.graphics;
 
 import net.Mega2223.AguaEngine.graphics.objects.Board;
-import net.Mega2223.AguaEngine.graphics.objects.Entity;
-import net.Mega2223.AguaEngine.graphics.objects.Shape;
+import net.Mega2223.AguaEngine.graphics.objects.GraphicObject;
+import net.Mega2223.AguaEngine.graphics.objects.shapes.Shape;
 import net.Mega2223.AguaEngine.graphics.objects.shapes.Oval;
 import net.Mega2223.AguaEngine.graphics.objects.shapes.Line;
 import net.Mega2223.AguaEngine.graphics.objects.shapes.Polygon;
@@ -26,7 +26,7 @@ public class Renderer {
         Graphics graphics = ret.getGraphics();
         Graphics2D graphics2D = (Graphics2D) graphics;
 
-        for(Entity entAct : board.entities){
+        for(GraphicObject entAct : board.entities){
             renderShape(ret, entAct.shape, entAct.coords);
         }
 
@@ -58,7 +58,7 @@ public class Renderer {
                 Line line = (Line) shape;
                 g2d.drawLine((int)line.start[0],(int)line.start[1],(int)line.end[0],(int)line.end[1]);
                 break;
-            case Shape.SHAPE_POLYGON:
+            case Shape.SHAPE_POLYGON: //todo preencher
                 Polygon polygon = (Polygon) shape;
                 float[] ant = polygon.points[polygon.points.length-1];
                 for(float[] act : polygon.points){

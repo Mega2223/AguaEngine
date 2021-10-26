@@ -1,4 +1,4 @@
-package net.Mega2223.AguaEngine.graphics.objects;
+package net.Mega2223.AguaEngine.graphics.objects.shapes;
 
 import java.awt.*;
 

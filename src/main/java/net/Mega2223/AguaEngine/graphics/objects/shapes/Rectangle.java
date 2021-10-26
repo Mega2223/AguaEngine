@@ -1,7 +1,5 @@
 package net.Mega2223.AguaEngine.graphics.objects.shapes;
 
-import net.Mega2223.AguaEngine.graphics.objects.Shape;
-
 
 public class Rectangle extends Shape {
     public float sizeX = 1;
