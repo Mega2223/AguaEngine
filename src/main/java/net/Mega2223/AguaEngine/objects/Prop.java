@@ -13,7 +13,7 @@ public class Prop {
     public static final int COLLISION_CIRCLE = 1;
 
 
-    public List<GraphicObject> entities = new ArrayList<GraphicObject>();
+    public List<GraphicObject> graphicObjects = new ArrayList<GraphicObject>();
     public int collisionAlgorithm = 0;
     public float[][] collisionBoundaries;
     public float[] coordinates = {0,0};
@@ -21,7 +21,7 @@ public class Prop {
     public Prop(float[][] collisionBoundaries){this.collisionBoundaries = collisionBoundaries;}
 
     public BufferedImage getRenderedInstance(Renderer renderer){
-        renderer.board.entities.addAll(entities);
+        renderer.board.entities.addAll(graphicObjects);
         return renderer.render();
     }
 }

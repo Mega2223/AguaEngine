@@ -16,11 +16,13 @@ public class Renderer {
     public Board board;
     public Renderer() {board = new Board();}
     public Renderer(Board board) {this.board = board; }
+    public boolean renderCorner = true;
+    public boolean repeatRender = false;
 
     /**Renderiza uma bufferedImage com os objetos do board da classe*/
-    public BufferedImage render (){return render(this.board);}
+    public BufferedImage render (){return render(this.board, renderCorner, repeatRender);}
     /**Renderiza uma bufferedImage com os objetos de um board*/
-    public static BufferedImage render(Board board) {
+    public static BufferedImage render(Board board, boolean renderCorner, boolean repeatRender) {
 
         BufferedImage ret = new BufferedImage(board.dim.width,board.dim.height,BufferedImage.TYPE_4BYTE_ABGR);
         Graphics graphics = ret.getGraphics();
@@ -28,10 +30,34 @@ public class Renderer {
 
         for(GraphicObject entAct : board.entities){
             renderShape(ret, entAct.shape, entAct.coords);
+
+            if(repeatRender){
+
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]});
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]});
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0],entAct.coords[1]+ret.getHeight()});
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0],entAct.coords[1]-ret.getHeight()});
+
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]-ret.getHeight()});
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]-ret.getHeight()});
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]+ret.getHeight()});
+                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]+ret.getHeight()});
+
+
+            }
         }
 
+        if(renderCorner){
+            graphics.setColor(Color.black);
+            graphics2D.drawLine(0,0,ret.getWidth(),0);
+            graphics2D.drawLine(0,0,0,ret.getHeight());
+            graphics2D.drawLine(ret.getWidth()-1,ret.getHeight(),ret.getWidth()-1,0);
+            graphics2D.drawLine(0,ret.getHeight()-1,ret.getWidth()-1,ret.getHeight()-1);
+
+        }
 
         //dependência da aguaLib
+        graphics2D.dispose();
         return ImageTools.createFlipped(ret);
     }
 
@@ -57,7 +83,16 @@ public class Renderer {
                 break;
             case Shape.SHAPE_LINE:
                 Line line = (Line) shape;
-                g2d.drawLine((int)line.start[0],(int)line.start[1],(int)line.end[0],(int)line.end[1]);
+                float[] ante = null;
+                for(float[] act : line.points){
+                    if(ante == null){ante = act; continue;}
+                    g2d.drawLine(
+                            (int)(ante[0] + coords[0]),
+                            (int)(ante[1] + coords[1]),
+                            (int)(act[0] + coords[0]),
+                            (int)(act[1] + coords[1]));
+                    ante = act;
+                }
                 break;
             case Shape.SHAPE_POLYGON: //todo preencher
                 Polygon polygon = (Polygon) shape;
@@ -69,7 +104,7 @@ public class Renderer {
                             (int)(act[0] + coords[0]),
                             (int)(act[1] + coords[1]));
                     ant = act;
-                    System.out.println((int)ant[0] + "e"+ (int)ant[1] +"e"+(int)act[0] + "e"+(int)act[1]);
+                    //System.out.println((int)ant[0] + "e"+ (int)ant[1] +"e"+(int)act[0] + "e"+(int)act[1]);
                 }
                 break;
             case Shape.SHAPE_RECTANGLE:
