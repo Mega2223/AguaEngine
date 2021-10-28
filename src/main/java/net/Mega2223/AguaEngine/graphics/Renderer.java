@@ -33,15 +33,15 @@ public class Renderer {
 
             if(repeatRender){
 
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]});
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]});
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0],entAct.coords[1]+ret.getHeight()});
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0],entAct.coords[1]-ret.getHeight()});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0],entAct.coords[1]+ret.getHeight()});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0],entAct.coords[1]-ret.getHeight()});
 
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]-ret.getHeight()});
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]-ret.getHeight()});
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]+ret.getHeight()});
-                renderShape(ret,entAct.shape, new float[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]+ret.getHeight()});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]-ret.getHeight()});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]-ret.getHeight()});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0]-ret.getWidth(),entAct.coords[1]+ret.getHeight()});
+                renderShape(ret,entAct.shape, new double[]{entAct.coords[0]+ret.getWidth(),entAct.coords[1]+ret.getHeight()});
 
 
             }
@@ -67,7 +67,7 @@ public class Renderer {
      * @param shape Shape pra ser renderizada
      * @param coords Coordenadas dentro da imagem para serem renderizadas
      * */
-    static void renderShape(BufferedImage ret, Shape shape, float[] coords){
+    static void renderShape(BufferedImage ret, Shape shape, double[] coords){
         Graphics gr = ret.getGraphics();
         Graphics2D g2d = (Graphics2D) gr;
         g2d.setColor(shape.color);
@@ -83,8 +83,8 @@ public class Renderer {
                 break;
             case Shape.SHAPE_LINE:
                 Line line = (Line) shape;
-                float[] ante = null;
-                for(float[] act : line.points){
+                double[] ante = null;
+                for(double[] act : line.points){
                     if(ante == null){ante = act; continue;}
                     g2d.drawLine(
                             (int)(ante[0] + coords[0]),
@@ -96,8 +96,8 @@ public class Renderer {
                 break;
             case Shape.SHAPE_POLYGON: //todo preencher
                 Polygon polygon = (Polygon) shape;
-                float[] ant = polygon.points[polygon.points.length-1];
-                for(float[] act : polygon.points){
+                double[] ant = polygon.points[polygon.points.length-1];
+                for(double[] act : polygon.points){
                     g2d.drawLine(
                             (int)(ant[0] + coords[0]),
                             (int)(ant[1] + coords[1]),

@@ -5,12 +5,12 @@ import net.Mega2223.AguaEngine.graphics.objects.shapes.Shape;
 
 public class GraphicObject {
 
-    public float[] coords = {0,0};
-    public float[] relativeCoords = {0,0};
+    public double[] coords = {0,0};
+    public double[] relativeCoords = {0,0};
     public Shape shape = new Oval(1,1);
 
-    public void setCoords(float[] coords){
-        this.coords = new float[]{coords[0],coords[1]};
+    public void setCoords(double[] coords){
+        this.coords = new double[]{coords[0],coords[1]};
     }
 
 }

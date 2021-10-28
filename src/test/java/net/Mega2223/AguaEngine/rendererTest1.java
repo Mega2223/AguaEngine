@@ -23,19 +23,19 @@ public class rendererTest1 {
 
         Oval s1 = new Oval(19,19);
         Rectangle s2 = new Rectangle(20,39);
-        Polygon s3 = new Polygon(new float[][]{});
+        Polygon s3 = new Polygon(new double[][]{});
 
         GraphicObject e1 = new GraphicObject();
         GraphicObject e2 = new GraphicObject();
         GraphicObject e3 = new GraphicObject();
 
-        e1.shape = new Polygon(new float[][]{{10,10},{10,-10},{-10,-10}});
+        e1.shape = new Polygon(new double[][]{{10,10},{10,-10},{-10,-10}});
         e2.shape = new Oval(30,20);
         e3.shape = new Rectangle(20,30);
 
-        e1.coords = new float[]{10,20};
-        e2.coords = new float[]{20,20};
-        e3.coords = new float[]{40,40};
+        e1.coords = new double[]{10,20};
+        e2.coords = new double[]{20,20};
+        e3.coords = new double[]{40,40};
 
         e1.shape.color = Color.black;
         e2.shape.color = Color.CYAN;

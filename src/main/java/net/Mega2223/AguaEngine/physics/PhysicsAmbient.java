@@ -19,10 +19,10 @@ public class PhysicsAmbient {
     public boolean hasGravity = false;
     public int gravityAlgorithm = GRAVITY_QUADRATIC_ALGORITHM;
     public int borderCollision = BORDER_COLLIDES;
-    public float gravity = 9.8f;
-    public float gravityDirection = 0; //float?
+    public double gravity = 9.8f;
+    public double gravityDirection = 0; //float?
     public double airRes = 0;
-    public float bounciness = 1f; //nome horrível
+    public double bounciness = 1; //nome horrível
     public Dimension dimension = new Dimension(300,300);
 
     public List<PhysicsProp> props = new ArrayList<PhysicsProp>();
@@ -54,13 +54,13 @@ public class PhysicsAmbient {
 
             act.velocity = (float) (act.velocity - (act.velocity/airRes));
 
-            float CX = act.coordinates[0];
-            float CY = act.coordinates[1];
+            double CX = act.coordinates[0];
+            double CY = act.coordinates[1];
 
             double radians = (Math.PI / 180) * (act.direction);
 
-            float xSpeed = (float) (act.velocity * Math.cos(radians));
-            float ySpeed = (float) (act.velocity * Math.sin(radians));
+            double xSpeed = (double) (act.velocity * Math.cos(radians));
+            double ySpeed = (double) (act.velocity * Math.sin(radians));
 
             //todo gravidade e os outros
 
@@ -84,17 +84,17 @@ public class PhysicsAmbient {
             //if (CY == 0/0){CY = 0;}
 
 
-            act.coordinates = new float[]{CX,CY};
+            act.coordinates = new double[]{CX,CY};
         }
     }
 
     /**atualiza a coordenada dos GraphicObjects para que elas continuem relativas ao prop*/
     public void updateEffectors(){
         for(PhysicsProp act : props){
-            float propCoords[] = act.coordinates;
+            double propCoords[] = act.coordinates;
             for (GraphicObject grACT : act.graphicObjects){
-                float[] relativeCoords = grACT.relativeCoords;
-                grACT.coords = new float[]{propCoords[0] + relativeCoords[0], propCoords[1] + relativeCoords[1]};
+                double[] relativeCoords = grACT.relativeCoords;
+                grACT.coords = new double[]{propCoords[0] + relativeCoords[0], propCoords[1] + relativeCoords[1]};
             }
         }
     }

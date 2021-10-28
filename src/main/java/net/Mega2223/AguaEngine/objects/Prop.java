@@ -15,10 +15,10 @@ public class Prop {
 
     public List<GraphicObject> graphicObjects = new ArrayList<GraphicObject>();
     public int collisionAlgorithm = 0;
-    public float[][] collisionBoundaries;
-    public float[] coordinates = {0,0};
+    public double[][] collisionBoundaries;
+    public double[] coordinates = {0,0};
 
-    public Prop(float[][] collisionBoundaries){this.collisionBoundaries = collisionBoundaries;}
+    public Prop(double[][] collisionBoundaries){this.collisionBoundaries = collisionBoundaries;}
 
     public BufferedImage getRenderedInstance(Renderer renderer){
         renderer.board.entities.addAll(graphicObjects);

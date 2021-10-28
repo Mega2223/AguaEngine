@@ -19,7 +19,7 @@ import java.util.List;
 
 public class runEffectorsTest1 {
 
-    private static float[][] legal = {{0,0},{1,1}};
+    private static double[][] legal = {{0,0},{1,1}};
 
     public static void main(String[] args) throws InterruptedException {
         PhysicsAmbient physicsAmbient = new PhysicsAmbient();
@@ -41,10 +41,10 @@ public class runEffectorsTest1 {
         renderer.board.dim = new Dimension(300,300);
 
         physicsProp.mass = 1;
-        physicsProp.coordinates = new float[]{100,100};
+        physicsProp.coordinates = new double[]{100,100};
 
         Line line = new Line();
-        line.points = new float[][]{physicsProp.coordinates};
+        line.points = new double[][]{physicsProp.coordinates};
         GraphicObject graphicObject1 = new GraphicObject();
         graphicObject1.shape = line;
         renderer.board.entities.add(graphicObject1);//todo
@@ -98,13 +98,13 @@ public class runEffectorsTest1 {
             //System.out.println(physicsProp.coordinates[0] + ":" + physicsProp.coordinates[1]);
             testWindow.icon.setIcon(new ImageIcon(renderer.render().getScaledInstance(testWindow.getWidth() -60,testWindow.getHeight() - 60, BufferedImage.SCALE_AREA_AVERAGING)));
 
-            List<float[]> lines = Arrays.asList(line.points);
+            List<double[]> lines = Arrays.asList(line.points);
             lines = new ArrayList(lines);
             lines.add(physicsProp.coordinates);
             while (lines.size() > 100){lines.remove(0);}
             line.points = lines.toArray(line.points);
             //System.out.println(line.points.length);
-            //line.points = (float[][]) lines.toArray();
+            //line.points = (double[][]) lines.toArray();
 
             renderer1.values.get(0).add(new double[]{turn, (double) physicsProp.velocity*1});
             graphic.icon.setIcon(new ImageIcon(renderer1.renderWithGrid(new ArrayList<List<double[]>>(), 1)));

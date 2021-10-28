@@ -1,9 +1,9 @@
 package net.Mega2223.AguaEngine.physics.props;
 
 public class Circle extends PhysicsProp {
-    public float radius = 0.0f;
+    public double radius ;
 
-    public Circle(float[][] collisionBoundaries, float radius) {
+    public Circle(double[][] collisionBoundaries, double radius) {
         super(collisionBoundaries);
         this.radius = radius;
     }
